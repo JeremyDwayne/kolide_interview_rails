@@ -1,0 +1,12 @@
+<div id="profile">
+  <h2><%= @player.name %></h2>
+
+  <p class="location"><%= @player.location %></p>
+
+  <p class="current-total">Current total: <%= @player.total_points %></p>
+  <p class="current-rank">Current rank: ???</p>
+
+  <p class="description"><%= @player.description %></p>
+
+  <p class="links">&larr; <%= link_to 'Back to list', root_path %></p>
+</div>
