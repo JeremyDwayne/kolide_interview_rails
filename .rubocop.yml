@@ -1,0 +1,21 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 192
+
+Metrics/MethodLength:
+  Max: 14
+
+Metrics/ModuleLength:
+  Max: 138

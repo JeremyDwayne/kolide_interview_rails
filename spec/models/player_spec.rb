@@ -1,5 +1,3 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe Player do
-  # ...
-end
+require "rails_helper"
