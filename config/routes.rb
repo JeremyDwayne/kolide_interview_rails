@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "/players" => "players#index"
-  get "/players/:id" => "players#show", as: :player
-
-  get "/players/new" => "players#new"
-  post "/players" => "players#create"
-
-  get "/players/:id/edit" => "players#edit"
-  patch "/players/:id" => "players#update"
-
+  resources :players
   root to: "players#index"
 end
