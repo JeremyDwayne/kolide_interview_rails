@@ -2,7 +2,7 @@
 
 class PlayersController < ApplicationController
   def index
-    @model = Player
+    @players = Player.all
   end
 
   def show

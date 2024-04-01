@@ -1,8 +1,12 @@
 <div id="players">
-<% players = @model.where('').to_a %>
-
-<% players.each do |player| %>
-  <% @player = player %>
-  <div class='player'><div class='total'><h4>Season Total</h4><%= player.total_points %></div><%= render partial: 'name_and_stuff' %><%= render partial: 'description', locals: { description: player.description } %></div>
-<% end %>
+  <% @players.each do |player| %>
+    <div class='player'>
+      <div class='total'>
+        <h4>Season Total</h4>
+        <%= player.total_points %>
+      </div>
+      <%= render partial: 'profile', locals: { player: player } %>
+      <%= render partial: 'description', locals: { description: player.description } %>
+    </div>
+  <% end %>
 </div>
