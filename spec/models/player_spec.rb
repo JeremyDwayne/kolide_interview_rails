@@ -32,5 +32,11 @@ RSpec.describe(Player, type: :model) do
     it "is not valid" do
       expect(described_class.create(invalid_attributes)).not_to(be_valid)
     end
+
+    it "must have a positive total_points" do
+      player = described_class.create(valid_attributes.merge(total_points: -1))
+      expect(player).not_to(be_valid)
+      expect(player.errors[:total_points]).to(include("must be greater than or equal to 0"))
+    end
   end
 end
