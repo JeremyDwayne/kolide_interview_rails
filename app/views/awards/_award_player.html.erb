@@ -1,0 +1,10 @@
+<%= form_with(model: award, url: award_player_path(award.id), method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :player_id %>
+    <%= form.collection_select(:player_id, @players, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Award Player" %>
+  </div>
+<% end %>

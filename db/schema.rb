@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_02_004104) do
+ActiveRecord::Schema.define(version: 2024_04_02_015335) do
+
+  create_table "awards", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_awards_on_name", unique: true
+  end
+
+  create_table "awards_players", id: false, force: :cascade do |t|
+    t.integer "award_id", null: false
+    t.integer "player_id", null: false
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "name"

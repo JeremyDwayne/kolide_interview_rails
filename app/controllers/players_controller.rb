@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy, :update_rank]
+  before_action :set_player, only: [:edit, :update, :destroy, :update_rank]
 
   def index
     @players = Player.all
   end
 
   def show
+    @player = Player.includes(:awards).find(params[:id])
   end
 
   def new

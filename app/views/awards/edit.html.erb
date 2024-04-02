@@ -1,0 +1,8 @@
+<h1>Editing Award</h1>
+
+<%= render 'form', award: @award %>
+<h2>Award a Player</h2>
+<%= render 'award_player', award: @award %>
+
+<%= link_to 'Show', @award %> |
+<%= link_to 'Back', awards_path %>

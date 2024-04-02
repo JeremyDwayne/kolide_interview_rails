@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Player < ApplicationRecord
+  has_many :awards_players, dependent: :destroy
+  has_many :awards, through: :awards_players
+
   validates :name, presence: true
   validates :total_points,
     presence: true,
