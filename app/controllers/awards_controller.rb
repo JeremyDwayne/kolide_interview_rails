@@ -6,11 +6,21 @@ class AwardsController < ApplicationController
   # GET /awards or /awards.json
   def index
     @awards = Award.all
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @awards) }
+    end
   end
 
   # GET /awards/1 or /awards/1.json
   def show
     @award = Award.includes(:players).find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @award) }
+    end
   end
 
   # GET /awards/new
