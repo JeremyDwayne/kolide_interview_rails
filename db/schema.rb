@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_05_15_152701) do
+ActiveRecord::Schema.define(version: 2024_04_02_004104) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2017_05_15_152701) do
     t.integer "total_points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rank", default: 0
   end
 
 end

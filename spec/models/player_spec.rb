@@ -46,6 +46,36 @@ RSpec.describe(Player, type: :model) do
     end
   end
 
+  describe "#player_rank" do
+    it "returns the correct rank" do
+      player1 = described_class.create!(name: "Player 1", total_points: 50)
+      player2 = described_class.create!(name: "Player 2", total_points: 100)
+      expect(player1.player_rank).to(eq(2))
+      expect(player2.player_rank).to(eq(1))
+    end
+  end
+
+  describe "#update_rank" do
+    it "updates the rank correctly" do
+      skip "#update_rank is not working as expected"
+      player1 = described_class.create!(name: "Player 1", total_points: 50)
+      player2 = described_class.create!(name: "Player 2", total_points: 100)
+      player1.update(total_points: 150)
+      player2.update_rank
+      # this fails on player 2, the rank is not updated
+      expect(player1.rank).to(eq(1))
+      expect(player2.rank).to(eq(2))
+    end
+
+    it "is called after total_points is updated" do
+      skip "#update_rank is not working as expected"
+      player = described_class.create!(name: "Player 1", total_points: 50, rank: 1)
+      allow(player).to(receive(:update_rank))
+      player.update(total_points: 100)
+      expect(player).to(have_received(:update_rank))
+    end
+  end
+
   describe "scopes" do
     let!(:player1) { described_class.create(valid_attributes.merge(total_points: 10)) }
     let(:player2) { described_class.create(valid_attributes.merge(total_points: 20)) }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy, :update_rank]
 
   def index
     @players = Player.all
@@ -49,9 +49,15 @@ class PlayersController < ApplicationController
     @player.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(players_url, notice: "player was successfully destroyed.") }
+      format.html { redirect_to(players_url, notice: "Player was successfully destroyed.") }
       format.json { head(:no_content) }
     end
+  end
+
+  def update_rank
+    @player.update_rank
+
+    redirect_to(@player)
   end
 
   private
