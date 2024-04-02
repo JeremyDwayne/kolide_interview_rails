@@ -8,7 +8,7 @@ RSpec.describe(PlayersController, type: :controller) do
       name: "John Doe",
       description: "A player",
       location: "New York, NY",
-      total_points: 123,
+      total_points: 12,
     }
   end
 

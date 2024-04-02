@@ -22,20 +22,7 @@
         <h1>Snookums</h1>
       </header>
 
-      <div id="big-board">
-        <div class="entry">
-          <p class="description">Top Cat</p>
-          I Don't Know
-        </div>
-        <div class="entry">
-          <p class="description">Season Average</p>
-          100
-        </div>
-        <div class="entry">
-          <p class="description">Bottom Player</p>
-          I Really Don't Know
-        </div>
-      </div>
+      <%= render partial: "leaderboard" %>
       <%= yield %>
     </div>
   </body>
