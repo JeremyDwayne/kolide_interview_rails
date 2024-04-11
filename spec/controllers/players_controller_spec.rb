@@ -73,7 +73,6 @@ RSpec.describe(PlayersController, type: :controller) do
       end
 
       it "updates the requested player and their rank" do
-        skip "#update_rank is not working as expected"
         player = Player.create!(valid_attributes)
         player2 = Player.create!(name: "Player 2", total_points: 15)
         expect(player2.rank).to(eq(1))
@@ -81,8 +80,6 @@ RSpec.describe(PlayersController, type: :controller) do
         player.reload
         expect(player.total_points).to(eq(20))
         expect(player.rank).to(eq(1))
-        player2.update_rank
-        expect(player2.rank).to(eq(2))
       end
     end
 

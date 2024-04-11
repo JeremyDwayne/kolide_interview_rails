@@ -14,15 +14,12 @@
   <body>
     <div id="container">
       <header>
-        <div id="menu">
-          <%= link_to 'Home', root_path %>
-          <%= link_to 'New Player', new_player_path %>
-        </div>
+        <%= render partial: "shared/menu" %>
 
         <h1>Snookums</h1>
       </header>
+      <%= render partial: "shared/leaderboard" %>
 
-      <%= render partial: "players/leaderboard" %>
       <%= yield %>
     </div>
   </body>

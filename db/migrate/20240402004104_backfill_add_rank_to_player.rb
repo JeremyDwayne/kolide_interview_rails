@@ -6,7 +6,6 @@ class BackfillAddRankToPlayer < ActiveRecord::Migration[6.1]
   def up
     Player.find_each do |player|
       player.update(rank: player.player_rank)
-      sleep(0.01)
     end
   end
 end

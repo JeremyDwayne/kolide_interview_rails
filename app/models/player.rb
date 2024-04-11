@@ -13,7 +13,13 @@ class Player < ApplicationRecord
       less_than_or_equal_to: 100,
     }
   # I dont know what a valid score is, so I am assuming it is between 0 and 100
+
+  before_save :set_rank, if: :total_points_changed?
   after_save :clear_cache, if: :saved_change_to_total_points?
+
+  def set_rank
+    self.rank = player_rank
+  end
 
   def clear_cache
     Rails.cache.delete("#{cache_key_with_version}/rank")
@@ -26,20 +32,6 @@ class Player < ApplicationRecord
     Rails.cache.fetch("#{cache_key_with_version}/rank", expires_in: 1.hour) do
       Player.where("total_points > ?", total_points).count + 1
     end
-  end
-
-  # I couldn't get the tests to pass for this, so I am commenting it out for now
-  # ideally I would want to store the rank in the database or in a cache so we're
-  # not hitting the database every page load
-
-  # before_create :set_initial_rank
-  # after_save :update_rank, if: :total_points_changed?
-  def set_initial_rank
-    self.rank = player_rank
-  end
-
-  def update_rank
-    update(rank: player_rank)
   end
 
   class << self

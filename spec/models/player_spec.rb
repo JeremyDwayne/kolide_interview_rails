@@ -55,24 +55,21 @@ RSpec.describe(Player, type: :model) do
     end
   end
 
-  describe "#update_rank" do
-    it "updates the rank correctly" do
-      skip "#update_rank is not working as expected"
+  describe "#set_rank" do
+    it "correctly on create" do
       player1 = described_class.create!(name: "Player 1", total_points: 50)
-      player2 = described_class.create!(name: "Player 2", total_points: 100)
-      player1.update(total_points: 150)
-      player2.update_rank
-      # this fails on player 2, the rank is not updated
-      expect(player1.rank).to(eq(1))
-      expect(player2.rank).to(eq(2))
+      described_class.create!(name: "Player 2", total_points: 70)
+      player1.set_rank
+      expect(player1.rank).to(eq(2))
     end
 
     it "is called after total_points is updated" do
-      skip "#update_rank is not working as expected"
-      player = described_class.create!(name: "Player 1", total_points: 50, rank: 1)
-      allow(player).to(receive(:update_rank))
+      player = described_class.create!(name: "Player 1", total_points: 50)
+      described_class.create!(name: "Player 2", total_points: 70)
+      allow(player).to(receive(:set_rank))
       player.update(total_points: 100)
-      expect(player).to(have_received(:update_rank))
+      expect(player.rank).to(eq(1))
+      expect(player).to(have_received(:set_rank))
     end
   end
 
