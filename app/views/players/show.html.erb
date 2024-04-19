@@ -4,9 +4,24 @@
   <p class="location"><%= @player.location %></p>
 
   <p class="current-total">Current total: <%= @player.total_points %></p>
-  <p class="current-rank">Current rank: ???</p>
+  <p class="current-rank">Current rank: <%= @player.player_rank %></p>
 
   <p class="description"><%= @player.description %></p>
 
-  <p class="links">&larr; <%= link_to 'Back to list', root_path %></p>
+<p>
+  <strong>Awards:</strong>
+  <ul>
+    <% @player.awards.each do |award| %>
+      <li>
+      <%= link_to award.name, award %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+  <p class="links">
+    &larr; <%= link_to 'Back to list', root_path %>
+    <%= link_to 'Edit', edit_player_path(@player) %>
+    <%= link_to 'Delete', player_path(@player), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
 </div>
